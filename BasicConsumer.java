@@ -37,7 +37,7 @@ public class BasicConsumer {
         props.put(SslConfigs.SSL_KEYSTORE_PASSWORD_CONFIG, "cisco123");
         props.put(SslConfigs.SSL_KEY_PASSWORD_CONFIG, "cisco123");
 
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "dce-smb-kafka--DSX");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "dce-smb-kafka--DSX1");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
@@ -60,8 +60,8 @@ public class BasicConsumer {
                     //System.out.println(record);
 
                     //Writes content of records to jar file in format of the string below
-                    String str = "Received Message topic = " + record.topic() + "|partition = " + record.partition()
-                            + "|offset = " + record.offset() + "|key = " + record.key() + "|value  = " + record.value();
+                    String str = record.topic() + "|" + record.partition() + "|" + record.offset() + "|"
+                            + record.key() + "|" + record.value();
                     out.println(str);
 
                     //Prints out records that are saved to .txt file
